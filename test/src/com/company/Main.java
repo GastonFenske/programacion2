@@ -8,7 +8,7 @@ public class Main {
 
         //System.out.println("Hola mundo");
 
-        Calculator calculator = new Calculator();
+        // Calculator calculator = new Calculator();
 
         // Logger.log("El resultado es: " + calculator.add(2, 3));
         // Logger.log("El resultado es: " + calculator.sub(5, 3));

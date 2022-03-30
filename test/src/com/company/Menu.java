@@ -24,7 +24,6 @@ public class Menu {
             
     }
 
-
         private void processOption(Integer option, Integer num, Integer num2){
 
             Calculator calculator = new Calculator();
@@ -41,7 +40,11 @@ public class Menu {
                 case 4:
                     Logger.log("El resultado es: " + calculator.div(num, num2)); 
                     break;
+                default:
+                    System.out.println("Opcion incorrecta");
+                    break;
             }
+
         }
 
 
