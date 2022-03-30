@@ -6,15 +6,18 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        System.out.println("Hola mundo");
+        //System.out.println("Hola mundo");
 
-        Calculator.showResult(Calculator.add(25, 25));
+        Calculator calculator = new Calculator();
 
-        Calculator.showResult(Calculator.multiply(5, 5));
+        // Logger.log("El resultado es: " + calculator.add(2, 3));
+        // Logger.log("El resultado es: " + calculator.sub(5, 3));
+        // Logger.log("El resultado es: " + calculator.multiply(2, 3));
+        // Logger.log("El resultado es: " + calculator.div(25, 5));
 
-        Calculator.showResult((Calculator.sub(6,4)));
+        Menu menu = new Menu();
+        menu.readOption();
 
-        Calculator.showResult((Calculator.div(25, 5)));
     }
 
 }
