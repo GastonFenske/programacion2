@@ -10,25 +10,38 @@ public class Calculator {
     }
      */
 
-    public Integer add(Integer num, Integer num2){
-        Integer result = num + num2;
-        return result;
-    }
-
-    public Integer multiply(Integer num, Integer num2){
-        Integer result = num * num2;
-        return result;
-    }
-
-    public Integer sub(Integer num, Integer num2){
-        Integer result = num - num2;
-        return result;
-    }
-
-    public Integer div(Integer num, Integer num2){
+    public Integer add(Integer... numbers){
         Integer result = 0;
-        if (num2 != 0){
-           result = num / num2;
+        for (Integer num : numbers){
+            result = result + num;
+        }
+        return result;
+    }
+
+    public Integer multiply(Integer... numbers){
+        Integer result = 1;
+        for (Integer num : numbers){
+            result = result * num;
+        }
+        return result;
+    }
+
+    public Integer sub(Integer... numbers){
+        Integer result = numbers[0];
+        for (Integer num : numbers){
+            if (num != numbers[0]){
+                result = result - num;
+            }
+        }
+        return result;
+    }
+
+    public Integer div(Integer... numbers){
+        Integer result = numbers[0];
+        for (Integer num : numbers){
+            if (num != numbers[0]){
+                result = result / num;
+            }
         }
         return result;
     }

@@ -1,6 +1,8 @@
 package com.company;
-import java.lang.invoke.CallSite;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Menu {
 
@@ -10,42 +12,60 @@ public class Menu {
         System.out.println(MENU_MESSAGE);
     }
 
-    public void readOption() {
+    public Integer readOption() {
         Scanner sc = new Scanner(System.in);
-        show();
-        Integer option = sc.nextInt();
+        // show();
+        // Integer option = sc.nextInt();
 
-        System.out.println("Ingrese el primer numero: ");
+        System.out.println("Ingrese un numero: ");
         Integer num = sc.nextInt();
-        System.out.println("Ingrese el segundo numero: ");
-        Integer num2 = sc.nextInt();
+        // System.out.println("Ingrese el segundo numero: ");
+        // Integer num2 = sc.nextInt();
 
-        this.processOption(option, num, num2);
-            
+        // this.processOption(option, num, num2);
+        return num;
     }
 
-        private void processOption(Integer option, Integer num, Integer num2){
+    public void chooseOperation(List<Integer> numbers){
+        this.show();
+        // this.readOption();
+        Scanner sc = new Scanner(System.in);
+        Integer operation = sc.nextInt();
+        this.processOperation(operation, numbers);
+    }
 
-            Calculator calculator = new Calculator();
-            switch(option){
-                case 1:
-                    Logger.log("El resultado es: " + calculator.add(num, num2));
-                    break;
-                case 2:
-                    Logger.log("El resultado es: " + calculator.sub(num, num2)); 
-                    break;
-                case 3:
-                    Logger.log("El resultado es: " + calculator.multiply(num, num2)); 
-                    break;
-                case 4:
-                    Logger.log("El resultado es: " + calculator.div(num, num2)); 
-                    break;
-                default:
-                    System.out.println("Opcion incorrecta");
-                    break;
-            }
+// 	static void display(Integer... values){  
+//         for(Integer value:values){  
+//          System.out.println(value);  
+//         }  
+//    }  
 
+//    List<Integer> numbers = new ArrayList<Integer>();
+
+    private void processOperation(Integer operation, List<Integer> numbers){
+
+        Calculator calculator = new Calculator();
+        switch(operation){
+            case 1:
+                // calculator.add2(numbers.toArray(new Integer[0]))
+                Logger.log("El resultado es: " + calculator.add(numbers.toArray(new Integer[0])));
+                // Logger.log("El resultado es: " + calculator.add(num, num2));
+                break;
+            case 2:
+                Logger.log("El resultado es: " + calculator.sub(numbers.toArray(new Integer[0])));
+                break;
+            case 3:
+                Logger.log("El resultado es: " + calculator.multiply(numbers.toArray(new Integer[0])));
+                break;
+            case 4:
+                Logger.log("El resultado es: " + calculator.div(numbers.toArray(new Integer[0]))); 
+                break;
+            default:
+                System.out.println("Opcion incorrecta");
+                break;
         }
+
+    }
 
 
 }
