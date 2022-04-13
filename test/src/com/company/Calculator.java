@@ -36,6 +36,8 @@ public class Calculator {
         return result;
     }
 
+    
+
     public Integer div(Integer... numbers){
         Integer result = numbers[0];
         for (Integer num : numbers){

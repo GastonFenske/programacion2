@@ -13,14 +13,19 @@ public class Main {
 
         Integer stop = 0;
         List<Integer> numbers = new ArrayList<Integer>();
+        List<String> operators = new ArrayList<String>();
         while (stop != 1){
             Integer num = menu.readOption();
-            if (num == 0){
+            String operator = menu.readOperator();
+            if (operator == "="){
                 stop = 1;
-                menu.chooseOperation(numbers);
+                menu.calc(numbers, operators);
+                System.out.println("Entra aca");
+                // menu.chooseOperation(numbers);
                 // System.out.println(numbers);
             }
             numbers.add(num);
+            operators.add(operator);
         } 
 
     }

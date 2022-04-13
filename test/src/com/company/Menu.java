@@ -1,5 +1,8 @@
 package com.company;
 import java.util.Scanner;
+
+import javax.security.auth.login.LoginException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +29,18 @@ public class Menu {
         return num;
     }
 
+    public String readOperator() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese un operador (+, -, *, /, =)");
+        String operator = sc.nextLine();
+        return operator;
+    }
+
     public void chooseOperation(List<Integer> numbers){
         this.show();
         // this.readOption();
         Scanner sc = new Scanner(System.in);
-        Integer operation = sc.nextInt();
+        String operation = sc.nextLine();
         this.processOperation(operation, numbers);
     }
 
@@ -40,32 +50,48 @@ public class Menu {
 //         }  
 //    }  
 
+    public void calc(List<Integer> numbers, List<String> operators){
+        Integer pointer = 0; 
+        Integer result = 0;
+        List<Integer> numbersToSend = new ArrayList<Integer>();
+        numbersToSend.add(numbers.get(0));
+        numbersToSend.add(numbers.get(1));
+        for (Integer num : numbers){
+            result = this.processOperation(operators.get(pointer), numbersToSend);
+            pointer = pointer + 1;
+            numbersToSend.clear();
+            numbersToSend.add(result);
+            numbersToSend.add(num);
+        }
+        Logger.log("El resultado es: " + result);
+    }
+
 //    List<Integer> numbers = new ArrayList<Integer>();
 
-    private void processOperation(Integer operation, List<Integer> numbers){
+    private Integer processOperation(String operation, List<Integer> numbers){
 
+        Integer result = 0;
         Calculator calculator = new Calculator();
         switch(operation){
-            case 1:
-                // calculator.add2(numbers.toArray(new Integer[0]))
-                Logger.log("El resultado es: " + calculator.add(numbers.toArray(new Integer[0])));
-                // Logger.log("El resultado es: " + calculator.add(num, num2));
+            case "+":
+                // Logger.log("El resultado es: " + calculator.add(numbers.toArray(new Integer[0])));
+                result = calculator.add(numbers.toArray(new Integer[0]));
                 break;
-            case 2:
-                Logger.log("El resultado es: " + calculator.sub(numbers.toArray(new Integer[0])));
-                break;
-            case 3:
-                Logger.log("El resultado es: " + calculator.multiply(numbers.toArray(new Integer[0])));
-                break;
-            case 4:
-                Logger.log("El resultado es: " + calculator.div(numbers.toArray(new Integer[0]))); 
-                break;
+            // case "-":
+            //     Logger.log("El resultado es: " + calculator.sub(numbers.toArray(new Integer[0])));
+            //     break;
+            // case "*":
+            //     Logger.log("El resultado es: " + calculator.multiply(numbers.toArray(new Integer[0])));
+            //     break;
+            // case "/":
+            //     Logger.log("El resultado es: " + calculator.div(numbers.toArray(new Integer[0]))); 
+            //     break;
             default:
                 System.out.println("Opcion incorrecta");
                 break;
         }
+        return result;
 
     }
-
 
 }
