@@ -9,24 +9,18 @@ public class Main {
 	// write your code here
 
         Menu menu = new Menu();
-        // menu.readOption();
 
-        Integer stop = 0;
         List<Integer> numbers = new ArrayList<Integer>();
         List<String> operators = new ArrayList<String>();
-        while (stop != 1){
+        while (true){
             Integer num = menu.readOption();
             String operator = menu.readOperator();
-            if (operator == "="){
-                stop = 1;
-                menu.calc(numbers, operators);
-                System.out.println("Entra aca");
-                // menu.chooseOperation(numbers);
-                // System.out.println(numbers);
-            }
             numbers.add(num);
+            if (operator.equals("=")){
+                menu.calc(numbers, operators);
+                break;
+            }
             operators.add(operator);
         } 
-
     }
 }

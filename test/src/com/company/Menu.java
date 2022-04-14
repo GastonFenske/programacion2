@@ -51,22 +51,19 @@ public class Menu {
 //    }  
 
     public void calc(List<Integer> numbers, List<String> operators){
-        Integer pointer = 0; 
         Integer result = 0;
         List<Integer> numbersToSend = new ArrayList<Integer>();
-        numbersToSend.add(numbers.get(0));
-        numbersToSend.add(numbers.get(1));
-        for (Integer num : numbers){
-            result = this.processOperation(operators.get(pointer), numbersToSend);
-            pointer = pointer + 1;
+        numbersToSend.add(numbers.remove(0));
+        for (String operator : operators) {
+            numbersToSend.add(numbers.remove(0));
+            result = this.processOperation(operator, numbersToSend);
             numbersToSend.clear();
             numbersToSend.add(result);
-            numbersToSend.add(num);
+
         }
         Logger.log("El resultado es: " + result);
     }
 
-//    List<Integer> numbers = new ArrayList<Integer>();
 
     private Integer processOperation(String operation, List<Integer> numbers){
 
@@ -77,15 +74,15 @@ public class Menu {
                 // Logger.log("El resultado es: " + calculator.add(numbers.toArray(new Integer[0])));
                 result = calculator.add(numbers.toArray(new Integer[0]));
                 break;
-            // case "-":
-            //     Logger.log("El resultado es: " + calculator.sub(numbers.toArray(new Integer[0])));
-            //     break;
-            // case "*":
-            //     Logger.log("El resultado es: " + calculator.multiply(numbers.toArray(new Integer[0])));
-            //     break;
-            // case "/":
-            //     Logger.log("El resultado es: " + calculator.div(numbers.toArray(new Integer[0]))); 
-            //     break;
+            case "-":
+                result = calculator.sub(numbers.toArray(new Integer[0]));
+                break;
+            case "*":
+                result = calculator.multiply(numbers.toArray(new Integer[0]));
+                break;
+            case "/":
+                result = calculator.div(numbers.toArray(new Integer[0]));
+                break;
             default:
                 System.out.println("Opcion incorrecta");
                 break;
