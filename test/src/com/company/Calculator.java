@@ -2,13 +2,6 @@ package com.company;
 
 public class Calculator {
 
-    /*
-    public static void showResult(int result){
-        String resultString = String.valueOf(result);
-        System.out.println("El resultado es: ".concat(resultString));
-
-    }
-     */
 
     public Integer add(Integer... numbers){
         Integer result = 0;

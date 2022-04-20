@@ -18,14 +18,9 @@ public class Menu {
     public Integer readOption() {
         Scanner sc = new Scanner(System.in);
         // show();
-        // Integer option = sc.nextInt();
-
         System.out.println("Ingrese un numero: ");
         Integer num = sc.nextInt();
-        // System.out.println("Ingrese el segundo numero: ");
-        // Integer num2 = sc.nextInt();
 
-        // this.processOption(option, num, num2);
         return num;
     }
 
@@ -38,20 +33,14 @@ public class Menu {
 
     public void chooseOperation(List<Integer> numbers){
         this.show();
-        // this.readOption();
         Scanner sc = new Scanner(System.in);
         String operation = sc.nextLine();
         this.processOperation(operation, numbers);
     }
 
-// 	static void display(Integer... values){  
-//         for(Integer value:values){  
-//          System.out.println(value);  
-//         }  
-//    }  
 
     public void calc(List<Integer> numbers, List<String> operators){
-        Integer result = 0;
+        Integer result = numbers.get(0);
         List<Integer> numbersToSend = new ArrayList<Integer>();
         numbersToSend.add(numbers.remove(0));
         for (String operator : operators) {
@@ -71,7 +60,6 @@ public class Menu {
         Calculator calculator = new Calculator();
         switch(operation){
             case "+":
-                // Logger.log("El resultado es: " + calculator.add(numbers.toArray(new Integer[0])));
                 result = calculator.add(numbers.toArray(new Integer[0]));
                 break;
             case "-":
