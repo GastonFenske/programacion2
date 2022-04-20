@@ -1,41 +1,29 @@
 package com.company;
 import java.util.Scanner;
-
-import javax.security.auth.login.LoginException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Menu {
 
-    private final String MENU_MESSAGE = "Ingrese 1 para sumar, 2 para restar, 3 para multiplicar o 4 para dividir:";
+    private final String MENU_MESSAGE_OP = "Ingrese un operador (+, -, *, /, =): ";
+    private final String MENU_MESSAGE_NUMBERS = "Ingrese un numero: ";
 
-    public void show(){
-        System.out.println(MENU_MESSAGE);
+    public void show(String message){
+        System.out.print(message);
     }
 
     public Integer readOption() {
         Scanner sc = new Scanner(System.in);
-        // show();
-        System.out.println("Ingrese un numero: ");
+        this.show(MENU_MESSAGE_NUMBERS);
         Integer num = sc.nextInt();
-
         return num;
     }
 
     public String readOperator() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese un operador (+, -, *, /, =)");
+        this.show(MENU_MESSAGE_OP);
         String operator = sc.nextLine();
         return operator;
-    }
-
-    public void chooseOperation(List<Integer> numbers){
-        this.show();
-        Scanner sc = new Scanner(System.in);
-        String operation = sc.nextLine();
-        this.processOperation(operation, numbers);
     }
 
 
@@ -52,7 +40,6 @@ public class Menu {
         }
         Logger.log("El resultado es: " + result);
     }
-
 
     private Integer processOperation(String operation, List<Integer> numbers){
 
